@@ -3,6 +3,7 @@ package com.pkbgtu.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -39,10 +40,11 @@ public class MainActivity extends Activity {
                 new CameraPosition(TARGET_LOCATION, 14.0f, 0.0f, 0.0f),
                 new Animation(Animation.Type.SMOOTH, 5),
                 null);
-        PlacemarkMapObject o = mapView.getMap().getMapObjects().addPlacemark(TARGET_LOCATION, ImageProvider.fromBitmap(drawSimpleBitmap("Hello")));
+        //Bitmap bMap = BitmapFactory.decodeFile("/res/drawable-xxxhdpi/icont.png");
+        PlacemarkMapObject o = mapView.getMap().getMapObjects().addPlacemark(TARGET_LOCATION, ImageProvider.fromResource(this, R.drawable.icont));
     }
 
-    public Bitmap drawSimpleBitmap(String text) {
+    /**public Bitmap drawSimpleBitmap(String text) {
         int picSize = 300;
         Bitmap bitmap = Bitmap.createBitmap(picSize, picSize, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
@@ -59,7 +61,7 @@ public class MainActivity extends Activity {
         canvas.drawText(text, picSize / 2,
                 picSize / 2 - ((paint.descent() + paint.ascent()) / 2), paint);
         return bitmap;
-    }
+    }**/
 
     @Override
     protected void onStop() {
